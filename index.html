@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <title>Weather App</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="rowsblock">
+            <div class="search-bar">
+                <input type="text" class="cityInput" id="cityInputLabel">
+                <button onclick="getLocation()">
+                    <i class="fas fa-map-marker-alt"></i>
+                </button>
+                <button id="getWeatherBtn" onclick="getWeather('city', document.getElementById('cityInputLabel').value)">
+                    <i class=" fas fa-cloud-sun"></i>
+                    <span id="getWeatherLabel" class="buttonText">Get Weather</span>
+                </button>
+            </div>
+
+</div>
+
+        <div class="rowsblock" id="weatherBlock" style="display: none">
+            <div id="resultBlock">
+                <div class="header">
+                    <span class="headerCity" id="cityNameLabel">City</span>
+                    <br>
+                    <img id="weatherIcon" class="weatherImg" alt="Weather Icon"/>
+                    <span  id="weatherDescriptionLabel">Snow</span>
+                </div>
+                <div class="column"> <!-- Первый столбец -->
+                    <div class="data">
+                        <p class="item">
+                            <i class="fas fa-thermometer-half"></i>
+                            <span class="key" id="temperatureLabel">:</span>
+                            <span class="value" id="temperatureValueLabel">+27С</span>
+                        </p>
+                    </div>
+                    <div class="data">
+                        <p class="item">
+                            <i class="fas fa-thermometer-half"></i>
+                            <span class="key" id="feelsLikeLabel">:</span>
+                            <span class="value" id="feelsLikeValueLabel">-15С</span>
+                        </p>
+                    </div>
+                    <div class="data">
+                        <p class="item">
+                            <i class="fas fa-wind"></i>
+                            <span class="key" id="windSpeedLabel"> :</span>
+                            <span class="value" id="windSpeedValueLabel">5 м/с</span>
+                        </p>
+                    </div>
+                </div>
+                <div class="column"> <!-- Второй столбец -->
+                    <div class="data">
+                        <p class="item">
+                            <i class="fas fa-tint"></i>
+                            <span class="key" id="humidityLabel">:</span>
+                            <span class="value" id="humidityValueLabel">98%</span>
+                        </p>
+                    </div>
+                    <div class="data">
+                        <p class="item">
+
+                            <i class="fas fa-tachometer-alt"></i>
+
+                            <span class="key" id="pressureLabel">:</span>
+                            <span class="value" id="pressureValueLabel">1030 hPa</span>
+                        </p>
+                    </div>
+                   <div class="data">
+                        <p class="item">
+                            <i class="fas fa-location-dot"></i>
+                            <span class="key" id="coordLabel"></span>
+                            <span class="value" id="coordValueLabel"></span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div class="rowsblock">
+            <a class="settinglabel" onclick="openSettings()">
+                <div id="settingLabel">Настройки</div>
+            </a>
+        </div>
+
+
+        <!--Settings-->
+
+        <div class="settings-container" id="settingsContainer">
+            <!-- Здесь разместите содержимое вашего окна настроек -->
+            <div class="modal-content">
+                <span class="settingsclose" onclick="closeSettings()">&times;</span>
+                <h2 id="setting1Label">Settings</h2>
+                <div class="column"> <!-- Первый столбец -->
+                    <div class="data">
+                        <p class="item">
+                            <span class="key">
+                                <label id="languageLabel">languageLabel</label>
+                            </span>
+                            <span class="value">
+                                <select id="languageSelector" onchange="changeLanguage(this.value)">
+                                    <option value="en">English</option>
+                                    <option value="ru">Русский</option>
+                                </select>
+                            </span>
+                        </p>
+                    </div>
+                    <div class="data">
+                        <p class="item">
+                            <span class="key">
+                                <label id="temperatureUnitLabel">Temperature Unit:</label>
+                            </span>
+                            <span class="value">
+                                <select id="temperatureSelector" onchange="changeTempUnit(this.value)">
+                                    <option value="сelsius">°C</option>
+                                    <option value="fahrenheit">°F</option>
+                                    <option value="kelvin">K</option>
+                                </select>
+
+                            </span>
+                        </p>
+                    </div>
+
+                </div>
+            </div>
+            <br>
+
+        </div>
+
+
+    </div>
+
+    <!---Notification --->
+    <div class="notification-container"></div>
+    <script src="scripts\script.js"></script>
+    <script src="scripts\ui.js"></script>
+    <script src="scripts\languages\languages.js"></script>
+    <script src="scripts\languages\language-switcher.js"></script>
+    <script src="scripts\openweather\openweather.js"></script>
+
+</body>
+</html>
